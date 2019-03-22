@@ -45,13 +45,15 @@ class BienvenidoActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissi
         }
 
         enableMyLocation()
-     obtenerUbicacion("jajaja")
 
-        //Vamos a localizarnos
-        comprar.setOnClickListener {
-            var i=Intent(this, MapsActivity::class.java)
-            startActivity(i)
+       //Simulamos que ya levantamos el registro el registro
+        //y la orden de comida
+        registrar.setOnClickListener {
+         //INvocamos el metodo obtenerLocalizacion
+            obtenerUbicacion("jajajajaja");
         }
+
+
 
 
 
