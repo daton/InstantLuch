@@ -37,6 +37,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add a marker in Sydney and move the camera
         val unitec = LatLng(Globales.lati!!, Globales.longi!!)
+
         mMap.addMarker(MarkerOptions().position(unitec).title("Estamos en unitec"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(unitec))
         mMap.moveCamera(CameraUpdateFactory.zoomTo(18f))
