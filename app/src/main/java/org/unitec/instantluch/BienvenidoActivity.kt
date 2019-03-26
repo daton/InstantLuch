@@ -5,11 +5,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import android.widget.Toast
+import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_bienvenido.*
 
@@ -45,15 +46,31 @@ class BienvenidoActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissi
         }
 
         enableMyLocation()
+       obtenerUbicacion("")
 
        //Simulamos que ya levantamos el registro el registro
         //y la orden de comida
         registrar.setOnClickListener {
          //INvocamos el metodo obtenerLocalizacion
-            obtenerUbicacion("jajajajaja");
+            MaterialDialog(this).show {
+                title(text="Tu orden")
+                message(text="Tu orden de Hamburguesa con queso  está lista!!")
+                icon(R.drawable.success)
+                positiveButton(text="Aceptar") { dialog ->
+                    // Do something
+
+
+                }
+                negativeButton(text="Cancelar") { dialog ->
+                    // Do something
+                }
+            }
         }
 
-
+       comprar.setOnClickListener {
+           var i=Intent(this, MapsActivity::class.java)
+           startActivity(i)
+       }
 
 
 
@@ -115,17 +132,18 @@ class BienvenidoActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissi
             .addOnSuccessListener { location: Location? ->
                 println("PPPPEEEEERRRRRROOOO");
 
-                Toast.makeText(
-                    applicationContext,
-                    "Loca " + location?.latitude + " Longi" + location?.longitude + " alti " + location?.altitude
-                    ,
-                    Toast.LENGTH_LONG
-                ).show()
-
                 miLati = location?.latitude
                 miLongi = location?.longitude
                 Globales.lati=miLati
                 Globales.longi=miLongi
+
+             //   Toast.makeText(
+             //       applicationContext,
+             //       "Loca " + location?.latitude + " Longi" + location?.longitude + " alti " + location?.altitude
+             //       ,
+             //       Toast.LENGTH_LONG
+            //    ).show()
+
 
             }
 
