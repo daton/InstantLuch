@@ -52,19 +52,7 @@ class BienvenidoActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissi
         //y la orden de comida
         registrar.setOnClickListener {
          //INvocamos el metodo obtenerLocalizacion
-            MaterialDialog(this).show {
-                title(text="Tu orden")
-                message(text="Tu orden de Hamburguesa con queso  está lista!!")
-                icon(R.drawable.success)
-                positiveButton(text="Aceptar") { dialog ->
-                    // Do something
 
-
-                }
-                negativeButton(text="Cancelar") { dialog ->
-                    // Do something
-                }
-            }
         }
 
        comprar.setOnClickListener {
