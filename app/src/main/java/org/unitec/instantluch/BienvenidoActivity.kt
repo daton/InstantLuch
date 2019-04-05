@@ -56,6 +56,8 @@ class BienvenidoActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissi
         }
 
        comprar.setOnClickListener {
+
+
            var i=Intent(this, MapsActivity::class.java)
            startActivity(i)
        }

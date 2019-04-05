@@ -49,7 +49,7 @@ class TareaOrden(private var ctx: Context?, private var usuario:Usuario?,
             var requestHeaders = HttpHeaders();
             requestHeaders.accept = Collections.singletonList(MediaType("application", "json"))
             var requestEntity =  HttpEntity<Usuario>(usuario,requestHeaders);
-            val respuesta = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String::class.java)
+            val respuesta = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String::class.java)
 
             estatus = maper.readValue(respuesta.body, Estatus::class.java)
 
