@@ -56,6 +56,24 @@ class BienvenidoActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissi
         }
 
        comprar.setOnClickListener {
+  //Aqui cargamos la orden
+           var miorden=Orden();
+           miorden.bebida="Coca Cola"
+           miorden.comida="Orden de alitas"
+   //Despues generamos un usuario
+           var miusuario=Usuario()
+           miusuario.id=1
+           miusuario.nombre="Panfilo"
+           miusuario.orden=miorden;
+         //Generamos la geolocalizacion
+         var loca=Localizacion()
+           loca.lat=miLati
+           loca.lon=miLongi
+          //La asignamos al usuario
+           miusuario.localizacion=loca
+
+           //Enviamos al servidor la informacion!!
+            TareaOrden(this, miusuario,this).execute(null,null,null)
 
 
            var i=Intent(this, MapsActivity::class.java)
